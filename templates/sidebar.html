@@ -1,1 +1,24 @@
 <!--sidebar.html-->
+<ul id="sidebar" class="list_unstyled">
+    <li href="{{url_for('main.main_route')}}">
+        Home
+    </li>
+    {% for page in pages %}
+    <li class="page_link" href="{{url_for('display.display_route', page=item.page, filter='all')}}">
+        {{page.title}}
+        <ul class="list_unstyled hidden">
+        {% for item in page.collection %}
+            <li href="{{url_for('display.display_route', page=item.page, filter='item.filter')}}">
+                {{item.filter}}
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+    <li href="{{url_for('about.about_route')}}">
+        About
+    </li>
+    <li href="{{url_for('contact.contact_route')}}">
+        Contact
+    </li>
+</ul>
