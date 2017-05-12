@@ -1,10 +1,10 @@
 $(document).ready(function(){
-    function makeList(){
-
-    }
-
     $('.page_link').on("click", function(){
-
-		sendRequest(url_to_req);
+        if($(this).is("untoggled")){
+            $(this).removeClass("untoggled").addClass("toggled");
+        }
+        else{
+            $(this).removeClass("toggled").addClass("untoggled");
+        }
 	});
 });

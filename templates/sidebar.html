@@ -1,12 +1,13 @@
 <!--sidebar.html-->
-<ul id="sidebar" class="list_unstyled">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/sidebar.css')}}">
+<ul id="sidebar">
     <li href="{{url_for('main.main_route')}}">
         Home
     </li>
     {% for page in pages %}
     <li class="page_link" href="{{url_for('display.display_route', page=item.page, filter='all')}}">
         {{page.title}}
-        <ul class="list_unstyled hidden">
+        <ul class="list_unstyled untoggled">
         {% for item in page.collection %}
             <li href="{{url_for('display.display_route', page=item.page, filter='item.filter')}}">
                 {{item.filter}}

@@ -7,19 +7,21 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!--costum CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
   </head>
   <body id="bootstrap-overrides">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
+        <div class="row no-gutter">
+            <div id="title-head" class="col-lg-3 col-md-6 col-12 text-left">
                 <h2>Jane Hardy Studios</h2>
             </div>
         </div>
         {% block content %}{% endblock %}
-        <p class="text-center">
+        <footer class="footer text-center">
             &copy {{year}} Jane Hardy | website design by Grant Hardy <br />
-            Login
-        </p>
+            <a href="#">Login</a>
+        </footer>
     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

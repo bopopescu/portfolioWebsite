@@ -1,0 +1,20 @@
+.page_link ul:hover{
+    display: block;
+}
+
+.toggled{
+    display: block;
+}
+
+.untoggled{
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    padding-left:2.5em;
+}
+
+#sidebar {
+    margin-top: 5em;
+}
