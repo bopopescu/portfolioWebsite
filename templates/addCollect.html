@@ -2,12 +2,23 @@
 
 {% extends "base.html" %}
 {% block content %}
+    <br />
     <h2> Add a new collection to the website:</h2>
-    <form action="{{ url_for('collection.collection_add_route')}}" method='post'>
-        <input type="text" name="new_collection">New collection name: <br>
+    <br  />
+    <form action="{{ url_for('collection.create_collection_route')}}" method='post'>
+         New collection name:  <input type="text" name="new_collection"><br>
         <input id="add_collect_submit" type="submit" value="SUBMIT">
     </form>
 
     <br />
+    <h2>
+        Click on any collection to edit or add photos to that collection
+    </h2>
     {% for item in collections %}
+        <h4>
+            <a href="{{url_for('collection.edit_collection_route', collection=item['title'])}}">
+                {{item['title']}}
+            </a>
+        </h4>
     {% endfor %}
+{% endblock %}

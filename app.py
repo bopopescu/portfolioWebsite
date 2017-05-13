@@ -13,6 +13,7 @@ app.register_blueprint(controllers.about)
 app.register_blueprint(controllers.contact)
 app.register_blueprint(controllers.display)
 app.register_blueprint(controllers.login)
+app.register_blueprint(controllers.collection)
 
 
 
