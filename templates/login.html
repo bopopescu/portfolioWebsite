@@ -1,1 +1,21 @@
 <!--login.html-->
+{% extends "base.html" %}
+{% block content %}
+
+
+<h2>Login</h2>
+
+<p id="error">
+</p>
+
+<form id="login_form">
+	Username: <input type="text" name="username" id="login_username_input"><br>
+	Password: <input type="password" name="password" id="login_password_input"><br>
+	  <input id="login_submit" type="submit" value="LOGIN">
+</form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/login.js')}}"></script>
+
+
+{% endblock %}

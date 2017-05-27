@@ -3,6 +3,11 @@
 }
 
 body {
-    background: black;
+    background: #1b1b1d;
+    color: white;
+}
+
+a:visited {
+    text-decoration: none;
     color: white;
 }

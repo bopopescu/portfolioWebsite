@@ -1,13 +1,5 @@
-.page_link ul:hover{
-    display: block;
-}
-
-.toggled{
-    display: block;
-}
-
-.untoggled{
-    display: none;
+#sidebar {
+    margin-top: 5em;
 }
 
 ul {
@@ -15,6 +7,6 @@ ul {
     padding-left:2.5em;
 }
 
-#sidebar {
-    margin-top: 5em;
+#sidebar li:hover{
+    color:#0084c4;
 }
