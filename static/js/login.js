@@ -4,7 +4,6 @@ $(document).ready(function() {
     {
         event.preventDefault();
         var url = '/api/v1/login';
-        console.log(url);
 
     $.ajax(
         {
@@ -20,7 +19,7 @@ $(document).ready(function() {
                 var queryString = window.location.href.indexOf('url=');
                 if (queryString == -1)
                 {
-                    window.location.replace("/al8sevu5/p3/")
+                    window.location.replace("/");
                 }
                 else
                 {

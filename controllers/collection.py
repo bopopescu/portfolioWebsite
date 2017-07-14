@@ -8,7 +8,7 @@ db = connect_to_database()
 
 collection = Blueprint('collection', __name__, template_folder='templates')
 
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'bmp', 'gif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif'])
 
 def query(query):
 	cur = db.cursor()
@@ -45,7 +45,7 @@ def edit_collection_route():
 		"year": datetime.datetime.now().year
 	}
 	collection = request.args.get('collection')
-	print("Collection " + collection, file=sys.stderr)
+
 	if request.method == 'GET':
 		img_data = query("SELECT * from Images WHERE collection = '"+ collection + "'")
 		options['images'] = img_data
@@ -60,6 +60,7 @@ def edit_collection_route():
 					get_extension = file.filename.rsplit('.', 1)[1].lower()
 					new_filename = hashed + "." + get_extension
 					filename = secure_filename(new_filename)
+					carousel = '0'
 					file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-					query("INSERT INTO Images(id, format, collection) VALUES ('"+hashed+"', '"+get_extension+"','" + collection + "')")
+					query("INSERT INTO Images(id, format, collection, carousel) VALUES ('"+hashed+"', '"+get_extension+"','" + collection + "','" + carousel + "')")
 		return redirect(url_for('collection.edit_collection_route', collection=collection))

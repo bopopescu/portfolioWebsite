@@ -5,13 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- lightSlider -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/lightslider.css')}}" />
+    <script src="{{url_for('static', filename='js/lightslider.js')}}"></script>
     <!--costum CSS -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+
   </head>
   <body id="bootstrap-overrides">
     <div class="container-fluid">
+        {% if logged_in %}
+        <div class"row no-gutter">
+            Logged in as {{user}}
+        </div>
+        {% endif %}
         <div class="row no-gutter">
             <div id="title-head" class="col-lg-3 col-md-6 col-12 text-left">
                 <h2><a href="{{url_for('main.main_route')}}">Jane Hardy Studios</a></h2>
@@ -20,13 +27,22 @@
         {% block content %}{% endblock %}
         <footer class="footer text-center">
             &copy {{year}} Jane Hardy | website design by Grant Hardy <br />
+            {% if logged_in %}
+            <form id="form_logout">
+                <input id="nav_logout" type="submit" value="Logout"></input>
+            </form>
+            <a href="{{url_for('collection.create_collection_route')}}">Edit Collections</a>
+            {% else %}
             <a href="{{url_for('login.login_route')}}">Login</a>
+            {% endif %}
         </footer>
     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/logout.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/carousel.js')}}"></script>
   </body>
 </html>

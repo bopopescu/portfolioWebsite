@@ -3,6 +3,7 @@ from flask import Flask, render_template, session
 import extensions
 import controllers
 import config
+from key import key
 app = Flask(__name__, template_folder='templates')
 UPLOAD_FOLDER = 'static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -14,7 +15,9 @@ app.register_blueprint(controllers.contact)
 app.register_blueprint(controllers.display)
 app.register_blueprint(controllers.login)
 app.register_blueprint(controllers.collection)
+app.register_blueprint(controllers.gallery)
 
+app.secret_key = key
 
 
 @app.errorhandler(404)

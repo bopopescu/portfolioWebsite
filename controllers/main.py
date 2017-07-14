@@ -12,9 +12,16 @@ def query(query):
 
 @main.route('/')
 def main_route():
-    options = {
-        "year": datetime.datetime.now().year
-    }
-    data = query("SELECT * from Collections ORDER BY created_time DESC")
-    options['collections'] = data
-    return render_template("index.html", **options)
+	options = {
+		"year": datetime.datetime.now().year
+	}
+	if 'username' in session:
+		options['logged_in'] = True
+		options['user'] = session['username']
+
+	data = query("SELECT * from Collections ORDER BY created_time DESC")
+	options['collections'] = data
+
+	slides = query("SELECT * FROM Images WHERE carousel = '0'")
+	options['slides'] = slides
+	return render_template("index.html", **options)
