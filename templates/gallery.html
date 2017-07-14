@@ -6,29 +6,36 @@
 
         {{helper.sidebar(collections)}}
     </div>
-    <div class="col-lg-8 col-md-8">
+    <div class="col-lg-7 col-md-7">
         <!--Main Area -->
+    </div>
+    <div id ="superId" class="col-lg-2 col-md-2">
         <ul id="light-slider">
-            <li style="background-color:blue;">
-                <h3>First Slide</h3>
-                <p>Lorem ipsum Cupidatat quis pariatur anim.</p>
+            <li>
+                <div class="img-slide-box">
+                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0166.jpg')}}"/>
+                </div>
             </li>
-            <li style="background-color:red;">
-                <h3>Second Slide</h3>
-                <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+            <li >
+                <div class="img-slide-box">
+                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0170.jpg')}}"/>
+                </div>
             </li>
-            <li style="background-color:yellow;">
-                <h3>Second Slide</h3>
-                <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+            <li >
+                <div class="img-slide-box">
+                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0206.jpg')}}"/>
+                </div>
             </li>
-            <li style="background-color:grey;">
-                <h3>Second Slide</h3>
-                <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+            <li >
+                <div class="img-slide-box">
+                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0213.jpg')}}"/>
+                </div>
             </li>
         </ul>
     </div>
-    <div class="col-lg-2 col-md-2">
+    <div class="col-lg-1 col-md-1">
     </div>
 </div>
 <script type="text/javascript" src="{{url_for('static', filename='js/gallery.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/gallery.css')}}">
 {% endblock %}
