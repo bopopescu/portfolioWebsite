@@ -1,0 +1,34 @@
+{% import 'helper.html' as helper %} {% extends "base.html" %} {% block content %}
+
+<div class="row no-gutter">
+    <div class="col-lg-2 col-md-2">
+        <!--Sidebar -->
+
+        {{helper.sidebar(collections)}}
+    </div>
+    <div class="col-lg-8 col-md-8">
+        <!--Main Area -->
+        <ul id="light-slider">
+            <li style="background-color:blue;">
+                <h3>First Slide</h3>
+                <p>Lorem ipsum Cupidatat quis pariatur anim.</p>
+            </li>
+            <li style="background-color:red;">
+                <h3>Second Slide</h3>
+                <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+            </li>
+            <li style="background-color:yellow;">
+                <h3>Second Slide</h3>
+                <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+            </li>
+            <li style="background-color:grey;">
+                <h3>Second Slide</h3>
+                <p>Lorem ipsum Excepteur amet adipisicing fugiat velit nisi.</p>
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-2 col-md-2">
+    </div>
+</div>
+<script type="text/javascript" src="{{url_for('static', filename='js/gallery.js')}}"></script>
+{% endblock %}
