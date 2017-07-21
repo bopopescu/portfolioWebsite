@@ -1,13 +1,50 @@
 #title-head{
     margin-top: 2em;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background: #1b1b1d;
+    background: #141417;
     color: white;
+}
+
+#container{
+    min-height: 100%;
+    position: relative;
+}
+
+#body{
+    padding-bottom: 30px;
+}
+
+#footer{
+    position: absolute;
+    height: 30px;
+    display: block;
+    float: right;
 }
 
 a:visited {
     text-decoration: none;
     color: white;
+}
+
+.footer{
+    width: 400px;
+    font-size: 10px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -200px;
+}
+
+@media only screen and (min-width: 501px) {
+    #sidebar {
+        padding-top: 40px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #sidebar {
+        padding-top: 0px;
+    }
 }

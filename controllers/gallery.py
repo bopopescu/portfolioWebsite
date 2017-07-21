@@ -1,5 +1,5 @@
 from flask import *
-from extensions import connect_to_database
+from extensions import *
 import datetime, hashlib, os, sys
 from werkzeug.utils import secure_filename
 
@@ -13,9 +13,15 @@ def query(query):
 	cur.execute(query)
 	return cur.fetchall()
 
-@gallery.route('/gallery/<galleryId>')
-def gallery_route(galleryId):
-    options = {
+@gallery.route('/gallery/<collection>')
+def gallery_route(collection):
+	options = {
 		"year": datetime.datetime.now().year
 	}
-    return render_template("gallery.html", **options)
+	options = authenticate(options)
+
+	data = query("SELECT * from Collections ORDER BY created_time DESC")
+	images = query("SELECT * FROM images WHERE collection =\"" + str(collection) + "\";")
+	options['collections'] = data
+	options['images'] = images
+	return render_template("gallery.html", **options)

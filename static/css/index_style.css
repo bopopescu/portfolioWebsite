@@ -2,3 +2,14 @@
     width: 400px;
     height: auto;
 }
+
+@media only screen and (max-width: 500px) {
+    #mainCarousel {
+        padding-top: 10px;
+    }
+}
+@media only screen and (min-width: 501px) {
+    #mainCarousel {
+        padding-top: 10px;
+    }
+}

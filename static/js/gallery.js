@@ -1,44 +1,72 @@
 //gallery.js
 
 $(document).ready(function() {
-    var slideer = $("#light-slider").lightSlider({
-        vertical:true,
-        item:3,
-        loop:false,
-        enableTouch:true,
-        enableDrag:true,
-        freeMove:true,
-        controls:true,
-        adaptiveHeight:false,
-        prevHtml:"<img src=\"/static/images/up-arrow.png\"/>",
-        nextHtml:"<img src=\"/static/images/down-arrow.png\"/>",
-        slideMargin:10
+
+    var comment_slider = $("#comment-slider").lightSlider({
+        item: 1,
+        loop: false,
+        enableTouch: false,
+        enableDrag: false,
+        freeMove: false,
+        controls: false,
+        adaptiveHeight: false
     });
+
+    var slider = $("#slider-gallery").lightSlider({
+        gallery: true,
+        thumbItem: 5,
+        item: 1,
+        loop: false,
+        enableTouch: true,
+        enableDrag: true,
+        freeMove: true,
+        controls: true,
+        adaptiveHeight: false,
+        prevHtml: "<img src=\"/static/images/up-arrow.png\"/>",
+        nextHtml: "<img src=\"/static/images/down-arrow.png\"/>",
+        slideMargin: 10,
+        onAfterSlide: function(el) {
+            imageResize();
+        },
+        onBeforeNextSlide: function(el) {
+            comment_slider.goToNextSlide();
+        },
+        onBeforePrevSlide: function(el) {
+            comment_slider.goToPrevSlide();
+        }
+    });
+
+
 
     $(window).resize(function() {
         //$('#light-slider img').width($('.img-slide-box li').width());
-        var item = 2;
-        var verticalHeight = item * $('.img-slide-box') + item * 10;
-        slider = $("#light-slider").lightSlider({
-            vertical:true,
-            item:item,
-            loop:false,
-            enableTouch:true,
-            enableDrag:true,
-            freeMove:true,
-            controls:true,
-            adaptiveHeight:false,
-            prevHtml:"<img src=\"/static/images/up-arrow.png\"/>",
-            nextHtml:"<img src=\"/static/images/down-arrow.png\"/>",
-            slideMargin:10,
-            verticalHeight:verticalHeight
-        });
-        slider.refresh();
-        $('#light-slider img').height($('.img-slide-box').height());
-        $('.lSPager').hide();
+
+        imageResize();
     });
 
     //Everything to run on start
-    $('.lSPager').hide();
-    $('#light-slider img').height($('.img-slide-box').width());
+    //$('#light-slider img').width($('.img-slide-box').width());
+    var imageResize = function() {
+        $('.lslide').height($('#main-gallery').width() * .66);
+        $('#slider-gallery img').each(function() {
+            if ($(this).width() < $(this).height()) { //vertical
+                $(this).height($('.lslide').height());
+            } else { //horizontal
+                $(this).width($('.lslide').width());
+            }
+        });
+    };
+
+    var thumbGalleryResize = function() {
+        var lowestImg = Infinity;
+        $('.lSGallery img').each(function() {
+            if ($(this).height() < lowestImg) {
+                lowestImg = $(this).height();
+            }
+        });
+        $('.lSPager .lSGallery').height(lowestImg);
+    }
+    imageResize();
+    thumbGalleryResize();
+    $('#comments .lSPager').hide();
 });

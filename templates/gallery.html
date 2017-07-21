@@ -1,39 +1,33 @@
 {% import 'helper.html' as helper %} {% extends "base.html" %} {% block content %}
 
 <div class="row no-gutter">
-    <div class="col-lg-2 col-md-2">
+    <div id="side-bar" class="col-lg-2 col-md-2">
         <!--Sidebar -->
 
         {{helper.sidebar(collections)}}
     </div>
-    <div class="col-lg-7 col-md-7">
+    <div id="main-gallery" class="col-lg-6 col-md-7">
         <!--Main Area -->
-    </div>
-    <div id ="superId" class="col-lg-2 col-md-2">
-        <ul id="light-slider">
-            <li>
+        <ul id="slider-gallery">
+            {% for image in images %}
+            <li data-thumb="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}"
+                data-src="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}">
                 <div class="img-slide-box">
-                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0166.jpg')}}"/>
+                    <img src="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}"/>
                 </div>
             </li>
-            <li >
-                <div class="img-slide-box">
-                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0170.jpg')}}"/>
-                </div>
-            </li>
-            <li >
-                <div class="img-slide-box">
-                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0206.jpg')}}"/>
-                </div>
-            </li>
-            <li >
-                <div class="img-slide-box">
-                    <img src="{{url_for('static', filename='images/gbh.6.3.17.0213.jpg')}}"/>
-                </div>
-            </li>
+            {% endfor %}
         </ul>
+        <!-- END Main Area -->
     </div>
-    <div class="col-lg-1 col-md-1">
+    <div id="comments" class="col-lg-4 col-md-3">
+        <ul id="comment-slider">
+            {% for image in images %}
+            <li style="padding-left:40px;">
+                {{image['caption']}}
+            </li>
+            {% endfor %}
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="{{url_for('static', filename='js/gallery.js')}}"></script>

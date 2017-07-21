@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+
     <!-- lightSlider -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/lightslider.css')}}" />
@@ -12,20 +14,23 @@
     <!--costum CSS -->
 <a href="http://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar"></a> <a href="http://www.flaticon.com" title="Flaticon"></a> <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"></a></div>
   </head>
-  <body id="bootstrap-overrides">
-    <div class="container-fluid">
-        {% if logged_in %}
-        <div class"row no-gutter">
-            Logged in as {{user}}
-        </div>
-        {% endif %}
-        <div class="row no-gutter">
-            <div id="title-head" class="col-lg-3 col-md-6 col-12 text-left">
-                <h2><a href="{{url_for('main.main_route')}}">Jane Hardy Studios</a></h2>
+  <body>
+    <div id="container" class="container-fluid">
+        <div id="body">
+            {% if logged_in %}
+            <div class"row no-gutter">
+                Logged in as {{user}}
             </div>
+            {% endif %}
+            <div class="row no-gutter">
+                <div id="title-head" class="col-lg-3 col-md-6 col-12 text-left">
+                    <h2><a href="{{url_for('main.main_route')}}">Jane Hardy Studios</a></h2>
+                </div>
+            </div>
+            {% block content %}{% endblock %}
         </div>
-        {% block content %}{% endblock %}
-        <footer class="footer text-center">
+        <div id="footer" class="footer text-center">
+
             &copy {{year}} Jane Hardy | website design by Grant Hardy <br />
             {% if logged_in %}
             <form id="form_logout">
@@ -35,7 +40,7 @@
             {% else %}
             <a href="{{url_for('login.login_route')}}">Login</a>
             {% endif %}
-        </footer>
+        </div>
     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">

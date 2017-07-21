@@ -53,6 +53,7 @@ def edit_collection_route():
 	elif request.method == 'POST':
 		if request.form['op'] == 'add':
 			file = request.files['file']
+			comment = request.form['comment']
 			if file.filename != '':
 				if file and allowed_file(file.filename):
 					m = hashlib.md5((file.filename + collection + str(datetime.datetime.now())).encode('utf-8'))
@@ -60,7 +61,10 @@ def edit_collection_route():
 					get_extension = file.filename.rsplit('.', 1)[1].lower()
 					new_filename = hashed + "." + get_extension
 					filename = secure_filename(new_filename)
-					carousel = '0'
+					carousel = '1'
+					if request.form.getlist('carousel'):
+						carousel = '0'
 					file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
-					query("INSERT INTO Images(id, format, collection, carousel) VALUES ('"+hashed+"', '"+get_extension+"','" + collection + "','" + carousel + "')")
+					query("INSERT INTO Images(id, format, caption, collection, carousel) VALUES \
+					('"+hashed+"', '"+get_extension+"','" +comment+ "','" + collection + "','" + carousel + "')")
 		return redirect(url_for('collection.edit_collection_route', collection=collection))
