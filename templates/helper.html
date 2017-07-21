@@ -1,20 +1,28 @@
 <!--helper.html-->
 {% macro sidebar(collections) %}
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/sidebar.css')}}">
-    <ul id="sidebar">
-        <li href="{{url_for('main.main_route')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/sidebar.css')}}">
+<ul id="sidebar">
+    <li>
+        <a href="{{url_for('main.main_route')}}">
             Home
+        </a>
+    </li>
+    {% for item in collections %}
+        <li class="page_link">
+            <a href="{{url_for('gallery.gallery_route', collection=item['title'])}}">
+                    {{item['title']}}
+                </a>
         </li>
-        {% for item in collections %}
-        <li class="page_link" href="{{url_for('display.display_route', collection=item['title'])}}">
-            {{item['title']}}
-        </li>
-        {% endfor %}
-        <li href="{{url_for('about.about_route')}}">
+    {% endfor %}
+    <li>
+        <a href="{{url_for('about.about_route')}}">
             About
-        </li>
-        <li href="{{url_for('contact.contact_route')}}">
+        </a>
+    </li>
+    <li>
+        <a href="{{url_for('contact.contact_route')}}">
             Contact
-        </li>
-    </ul>
+        </a>
+    </li>
+</ul>
 {% endmacro %}

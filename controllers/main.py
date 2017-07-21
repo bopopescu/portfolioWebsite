@@ -1,6 +1,6 @@
 #main.py
 from flask import *
-from extensions import connect_to_database
+from extensions import *
 import datetime
 db = connect_to_database()
 
@@ -15,10 +15,7 @@ def main_route():
 	options = {
 		"year": datetime.datetime.now().year
 	}
-	if 'username' in session:
-		options['logged_in'] = True
-		options['user'] = session['username']
-
+	options = authenticate(options)
 	data = query("SELECT * from Collections ORDER BY created_time DESC")
 	options['collections'] = data
 

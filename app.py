@@ -12,7 +12,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.register_blueprint(controllers.main)
 app.register_blueprint(controllers.about)
 app.register_blueprint(controllers.contact)
-app.register_blueprint(controllers.display)
 app.register_blueprint(controllers.login)
 app.register_blueprint(controllers.collection)
 app.register_blueprint(controllers.gallery)
