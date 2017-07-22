@@ -21,7 +21,7 @@ def gallery_route(collection):
 	options = authenticate(options)
 
 	data = query("SELECT * from Collections ORDER BY created_time DESC")
-	images = query("SELECT * FROM images WHERE collection =\"" + str(collection) + "\";")
+	images = query("SELECT * FROM Images WHERE collection =\"" + str(collection) + "\";")
 	options['collections'] = data
 	options['images'] = images
 	return render_template("gallery.html", **options)

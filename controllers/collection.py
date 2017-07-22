@@ -1,5 +1,5 @@
 from flask import *
-from extensions import connect_to_database
+from extensions import *
 import datetime, hashlib, os, sys
 from werkzeug.utils import secure_filename
 
@@ -24,6 +24,7 @@ def create_collection_route():
 	options = {
 		"year": datetime.datetime.now().year
 	}
+	options = authenticate(options)
 	if request.method == 'GET':
 		data = query("SELECT * from Collections ORDER BY created_time DESC")
 		options['collections'] = data
@@ -44,6 +45,7 @@ def edit_collection_route():
 	options = {
 		"year": datetime.datetime.now().year
 	}
+	options = authenticate(options)
 	collection = request.args.get('collection')
 
 	if request.method == 'GET':

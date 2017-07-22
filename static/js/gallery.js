@@ -22,11 +22,14 @@ $(document).ready(function() {
         freeMove: true,
         controls: true,
         adaptiveHeight: false,
-        prevHtml: "<img src=\"/static/images/up-arrow.png\"/>",
-        nextHtml: "<img src=\"/static/images/down-arrow.png\"/>",
+        prevHtml: "<img src=\"/static/resource_imgs/left-chevron.png\"/>",
+        nextHtml: "<img src=\"/static/resource_imgs/right-chevron.png\"/>",
         slideMargin: 10,
         onAfterSlide: function(el) {
             imageResize();
+        },
+        onBeforeSlide: function(el){
+            comment_slider.goToSlide(slider.getCurrentSlideCount() -1);
         },
         onBeforeNextSlide: function(el) {
             comment_slider.goToNextSlide();
@@ -68,5 +71,8 @@ $(document).ready(function() {
     }
     imageResize();
     thumbGalleryResize();
+
+
+
     $('#comments .lSPager').hide();
 });
