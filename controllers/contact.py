@@ -10,7 +10,7 @@ def query(query):
 	cur.execute(query)
 	return cur.fetchall()
 
-@contact.route('/about')
+@contact.route('/contact')
 def contact_route():
 	options = {
 		"year": datetime.datetime.now().year
@@ -18,4 +18,4 @@ def contact_route():
 	options = authenticate(options)
 	data = query("SELECT * from Collections ORDER BY created_time DESC")
 	options['collections'] = data
-	return render_template("contact.html", **option)
+	return render_template("contact.html", **options)

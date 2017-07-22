@@ -1,11 +1,15 @@
 #title-head{
     margin-top: 2em;
-    font-family: 'Montserrat', sans-serif;
+}
+
+#title-head a:hover{
+    font-size: 105%;
 }
 
 body {
     background: #141417;
     color: white;
+    font-family: 'Marcellus', serif;
 }
 
 #container{
@@ -22,6 +26,11 @@ body {
     height: 30px;
     display: block;
     float: right;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 a:visited {

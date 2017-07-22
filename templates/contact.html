@@ -1,1 +1,23 @@
 <!--contact.html-->
+{% import 'helper.html' as helper %}
+{% extends "base.html" %} {% block content %}
+
+<div class="row no-gutter">
+    <div class="col-lg-2 col-md-2">
+        <!--Sidebar -->
+
+        {{helper.sidebar(collections)}}
+    </div>
+    <div class="col-lg-8 col-md-8" style="padding-top:50px">
+        <!--Carosel -->
+        Jane Hardy <br  />
+        Baltimore area <br  />
+        Email <a href="mailto:janehardystudio@gmail.com"> janehardystudio@gmail.com </a>
+
+    </div>
+    <div class="col-lg-2 col-md-2">
+    </div>
+  </body>
+</div>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index_style.css')}}">
+{% endblock %}
