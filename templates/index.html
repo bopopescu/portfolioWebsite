@@ -21,8 +21,9 @@
                 {% for slide in slides %}
                 <div class="carousel-item">
                     <div style=" width:100%; height:auto;padding:5%;">
-                        <img src="{{url_for('static',filename='images/')}}{{slide.id}}.{{slide.format}}"
-                            class="d-block img-fluid"\>
+                        <img src="https://s3.amazonaws.com/janehardystudio/{{slide.id}}.{{slide.format}}"
+                            class="d-block img-fluid"
+                            href="{{url_for('gallery.gallery_route', collection=slide['collection'])}}"\>
                         <div class="carousel-caption d-none d-md-block">
                             <h4>{{slide.label}}</h4>
                         </div>

@@ -10,10 +10,10 @@
         <!--Main Area -->
         <ul id="slider-gallery">
             {% for image in images %}
-            <li data-thumb="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}"
-                data-src="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}">
+            <li data-thumb="https://s3.amazonaws.com/janehardystudio/{{image.id}}.{{image.format}}"
+                data-src="https://s3.amazonaws.com/janehardystudio/{{image.id}}.{{image.format}}">
                 <div class="img-slide-box">
-                    <img  index='{{loop.index0}}' src="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}"/>
+                    <img  index='{{loop.index0}}' src="https://s3.amazonaws.com/janehardystudio/{{image.id}}.{{image.format}}"/>
                 </div>
             </li>
             {% endfor %}

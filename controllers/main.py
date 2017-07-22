@@ -16,9 +16,9 @@ def main_route():
 		"year": datetime.datetime.now().year
 	}
 	options = authenticate(options)
-	data = query("SELECT * from Collections ORDER BY created_time DESC")
+	data = query("SELECT * from Collections ORDER BY created_time ")
 	options['collections'] = data
 
-	slides = query("SELECT * FROM Images WHERE carousel = '0'")
+	slides = query("SELECT * FROM Images WHERE carousel = '0' ORDER BY created_time")
 	options['slides'] = slides
 	return render_template("index.html", **options)

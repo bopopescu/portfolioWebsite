@@ -1,7 +1,10 @@
 from flask import *
 from extensions import *
 import datetime, hashlib, os, sys
+from key import s3_key, s3_skey
 from werkzeug.utils import secure_filename
+import tinys3
+
 
 
 db = connect_to_database()
@@ -66,7 +69,8 @@ def edit_collection_route():
 					carousel = '1'
 					if request.form.getlist('carousel'):
 						carousel = '0'
-					file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+					conn = tinys3.Connection(s3_key,s3_skey,tls=True)
+					conn.upload(new_filename,file,'janehardystudio')
 					query("INSERT INTO Images(id, format, caption, collection, carousel) VALUES \
 					('"+hashed+"', '"+get_extension+"','" +comment+ "','" + collection + "','" + carousel + "')")
 		return redirect(url_for('collection.edit_collection_route', collection=collection))
