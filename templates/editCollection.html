@@ -13,6 +13,6 @@
 </form>
 
 {% for image in images %}
-<img src="{{url_for('static', filename='images/')}}{{image.id}}.{{image.format}}" style="width:500px;heigh:auto;" />
+<img src="https://s3.amazonaws.com/janehardystudio/{{image.id}}.{{image.format}}" style="width:500px;heigh:auto;" />
 {% endfor %}
 {% endblock %}
