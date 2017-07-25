@@ -1,14 +1,11 @@
 #about.py
 from flask import *
-from extensions import *
+from extensions import query, authenticate
 import datetime
-db = connect_to_database()
+
 
 about = Blueprint('about', __name__, template_folder='templates')
-def query(query):
-	cur = db.cursor()
-	cur.execute(query)
-	return cur.fetchall()
+
 
 @about.route('/about')
 def about_route():

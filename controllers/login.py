@@ -1,15 +1,11 @@
 #login.py
 from flask import *
-from extensions import connect_to_database
+from extensions import query
 import datetime, hashlib
-db = connect_to_database()
+
 
 login = Blueprint('login', __name__, template_folder='templates')
 
-def query(query):
-	cur = db.cursor()
-	cur.execute(query)
-	return cur.fetchall()
 
 @login.route('/login', methods=['GET'])
 def login_route():

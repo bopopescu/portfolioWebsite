@@ -1,14 +1,10 @@
 #contact.py
 from flask import *
-from extensions import *
+from extensions import query, authenticate
 import datetime
-db = connect_to_database()
 
 contact = Blueprint('contact', __name__, template_folder='templates')
-def query(query):
-	cur = db.cursor()
-	cur.execute(query)
-	return cur.fetchall()
+
 
 @contact.route('/contact')
 def contact_route():

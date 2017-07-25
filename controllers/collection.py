@@ -1,5 +1,5 @@
 from flask import *
-from extensions import *
+from extensions import query, authenticate
 import datetime, hashlib, os, sys
 from key import s3_key, s3_skey
 from werkzeug.utils import secure_filename
@@ -7,16 +7,12 @@ import tinys3
 
 
 
-db = connect_to_database()
+
 
 collection = Blueprint('collection', __name__, template_folder='templates')
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif'])
 
-def query(query):
-	cur = db.cursor()
-	cur.execute(query)
-	return cur.fetchall()
 
 def allowed_file(filename):
 	return '.' in filename and \

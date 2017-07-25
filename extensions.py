@@ -15,6 +15,17 @@ def connect_to_database():
   db.autocommit(True)
   return db
 
+db = connect_to_database()
+
+def query(query):
+	global db
+	cur = db.cursor()
+	cur.execute(query)
+	response = cur.fetchall()
+	cur.close()
+	return response
+
+
 def authenticate(options):
 	if 'username' in session:
 		options['logged_in']= True
