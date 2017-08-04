@@ -15,14 +15,15 @@ def connect_to_database():
   db.autocommit(True)
   return db
 
-db = connect_to_database()
+
 
 def query(query):
-	global db
+	db = connect_to_database()
 	cur = db.cursor()
 	cur.execute(query)
 	response = cur.fetchall()
 	cur.close()
+	db.close()
 	return response
 
 
